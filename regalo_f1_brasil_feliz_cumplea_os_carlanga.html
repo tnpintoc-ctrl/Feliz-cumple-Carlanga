@@ -1,0 +1,309 @@
+<!-- ... existing code ... -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Feliz Cumpleaños Carlanga! | Regalo Especial F1</title>
+    
+    <!-- Google Fonts: Orbitron (títulos F1), Plus Jakarta Sans (textos modernos) y Playfair Display (dedicatoria familiar) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;800;900&family=Playfair+Display:ital,wght@0,500;0,700;1,500;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS para utilidades responsivas -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        /* ==========================================================================
+           VARIABLES Y CONFIGURACIÓN BASE
+           ========================================================================== */
+        :root {
+            --f1-red: #e10600;
+            --f1-red-bright: #ff241d;
+            --f1-dark: #0b0d12;
+            --f1-card: #13161f;
+            --gold: #ffd166;
+            --gold-deep: #d4a338;
+            --brazil-green: #009c3b;
+            --brazil-yellow: #ffdf00;
+            --brazil-blue: #002776;
+        }
+
+        * {
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            background-color: var(--f1-dark);
+            color: #FFFFFF;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        .font-racing {
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .font-dedication {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* ==========================================================================
+           FONDO TEXTURA FIBRA DE CARBONO Y LUCES AMBIENTALES CÁLIDAS
+           ========================================================================== */
+        .carbon-bg {
+            background-color: #0b0d12;
+            background-image: 
+                radial-gradient(circle at 50% 35%, rgba(225, 6, 0, 0.16) 0%, rgba(255, 209, 102, 0.06) 35%, rgba(11, 13, 18, 0.96) 78%),
+                linear-gradient(27deg, #12151d 5px, transparent 5px),
+                linear-gradient(207deg, #12151d 5px, transparent 5px),
+                linear-gradient(27deg, #181c26 5px, transparent 5px),
+                linear-gradient(207deg, #181c26 5px, transparent 5px),
+                linear-gradient(90deg, #0e1117 10px, transparent 10px),
+                linear-gradient(#0e1117 25%, #0c0e14 25%, #0c0e14 50%, transparent 50%, transparent 75%, #141720 75%, #141720);
+            background-size: 100% 100%, 20px 20px, 20px 20px, 20px 20px, 20px 20px, 20px 20px, 20px 20px;
+            background-position: 0 0, 0 0, 10px 10px, 0 5px, 10px 15px, 0 0, 0 0;
+        }
+<!-- ... existing code ... -->
+                <!-- Estelas de velocidad aerodinámicas -->
+                <rect x="0" y="42" width="165" height="3" rx="1.5" fill="url(#speedStreak)"/>
+                <rect x="18" y="68" width="130" height="2.5" rx="1.25" fill="url(#speedStreak)"/>
+                <rect x="5" y="132" width="195" height="3.5" rx="1.75" fill="url(#speedStreak)"/>
+
+                <!-- Estela de humo y aire turbulento trasero -->
+                <ellipse cx="75" cy="118" rx="48" ry="12" fill="rgba(255, 255, 255, 0.14)"/>
+                <ellipse cx="42" cy="112" rx="34" ry="9" fill="rgba(255, 209, 102, 0.12)"/>
+
+                <!-- Fuego/chispas del escape trasero -->
+                <path d="M115 92 L42 87 L68 95 L35 101 L115 99 Z" fill="url(#exhaustFlame)"/>
+<!-- ... existing code ... -->
+            <h1 class="font-racing text-3xl sm:text-5xl font-black tracking-tight text-white drop-shadow-[0_4px_20px_rgba(225,6,0,0.5)] leading-tight">
+                ¡Feliz cumpleaños <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#ffd166] via-amber-300 to-yellow-500">Carlanga!</span>
+            </h1>
+        </div>
+    </main>
+
+    <!-- ==========================================================================
+         2. PANTALLA DE REVELACIÓN: TICKET F1 SÃO PAULO + FOTO Y DEDICATORIA
+         ========================================================================== -->
+    <section id="reveal-screen" class="hidden relative z-20 w-full max-w-5xl mx-auto py-4 sm:py-8">
+        
+        <!-- Encabezado celebratorio -->
+        <div class="text-center mb-6 sm:mb-8">
+            <span class="inline-block px-4 py-1 rounded-full bg-[#e10600]/20 border border-[#e10600]/45 text-red-400 font-racing text-xs sm:text-sm font-bold tracking-widest uppercase mb-2">
+                🏁 ¡Luz verde! Nos vamos a Brasil 🏁
+            </span>
+            <h2 class="font-racing text-2xl sm:text-4xl md:text-5xl font-black text-white tracking-wide">
+                ¡FELIZ CUMPLEAÑOS <span class="text-[#ffd166]">CARLANGA!</span>
+            </h2>
+        </div>
+
+        <!-- Contenedor principal en Grid Responsivo (Ticket Oficial F1 + Fotografía y Dedicatoria) -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-stretch">
+            
+            <!-- SECCIÓN A (7 cols en desktop): EL TICKET OFICIAL F1 -->
+            <div class="lg:col-span-7 flex flex-col">
+                <div class="f1-ticket rounded-3xl flex-1 flex flex-col justify-between">
+                    <!-- Franja superior bandera a cuadros -->
+                    <div class="checkered-strip"></div>
+
+                    <!-- Cabecera roja F1 con bandera de Brasil -->
+                    <div class="bg-gradient-to-r from-[#e10600] via-[#c40500] to-[#990300] px-5 sm:px-7 py-4 flex items-center justify-between gap-3 border-b border-[#ffd166]/35">
+                        <div>
+                            <p class="text-[11px] sm:text-xs font-bold tracking-[0.2em] text-[#ffd166] uppercase">
+                                Official VIP Race Pass • FIA World Championship
+                            </p>
+                            <h3 class="font-racing text-sm sm:text-lg md:text-xl font-black text-white tracking-wide mt-1 leading-snug">
+                                FORMULA 1 — GRANDE PRÊMIO DE SÃO PAULO • AUTÓDROMO DE INTERLAGOS
+                            </h3>
+                        </div>
+
+                        <!-- Bandera de Brasil en SVG nítido -->
+                        <div class="shrink-0 w-12 h-8 sm:w-14 sm:h-10 rounded-md overflow-hidden shadow-lg border border-white/25" title="Brasil">
+                            <svg viewBox="0 0 72 50" class="w-full h-full">
+                                <rect width="72" height="50" fill="#009c3b"/>
+                                <polygon points="36,6 65,25 36,44 7,25" fill="#ffdf00"/>
+                                <circle cx="36" cy="25" r="11" fill="#002776"/>
+                                <path d="M25.5 23 Q36 20 46.5 26.5" stroke="#FFFFFF" stroke-width="2" fill="none"/>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <!-- Cuerpo del Ticket -->
+                    <div class="p-5 sm:p-7 space-y-5 relative">
+                        <!-- Muescas laterales estilo borde perforado -->
+                        <div class="ticket-notch-left top-1/2 -translate-y-1/2"></div>
+                        <div class="ticket-notch-right top-1/2 -translate-y-1/2"></div>
+
+                        <!-- Titular del pase VIP -->
+                        <div class="bg-white/[0.04] rounded-2xl p-4 border border-[#ffd166]/25 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+                            <div>
+                                <span class="block text-[11px] uppercase tracking-widest text-gray-400 font-bold">
+                                    PASAJERO / INVITADO VIP
+                                </span>
+                                <span class="font-racing font-black text-xl sm:text-2xl text-[#ffd166] tracking-wider mt-0.5 block">
+                                    CARLANGA
+                                </span>
+                            </div>
+                            <span class="inline-flex items-center self-start sm:self-center gap-1.5 px-3 py-1 rounded-full bg-[#009c3b]/20 border border-[#009c3b]/50 text-emerald-300 text-xs font-bold tracking-wider uppercase">
+                                <span>🇧🇷</span> São Paulo, Brasil
+                            </span>
+                        </div>
+
+                        <!-- SECTOR EN DESTAQUE GIGANTE: ENTRADA G — SÃO PAULO F1 -->
+                        <div class="relative rounded-2xl p-5 sm:p-6 bg-gradient-to-br from-[#ffd166]/15 via-[#e10600]/20 to-black/70 border-2 border-[#ffd166]/75 text-center shadow-[0_0_28px_rgba(255,209,102,0.16)]">
+                            <span class="inline-block px-3.5 py-0.5 rounded-full bg-gradient-to-r from-[#ffd166] to-amber-400 text-[#0b0d12] font-racing font-black text-[11px] tracking-widest uppercase mb-2.5">
+                                SECTOR G • ACCESO OFICIAL • ¡NOS VEMOS EN BRASIL!
+                            </span>
+                            <div class="font-racing text-2xl sm:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#ffd166] via-white to-[#ffd166] tracking-wider drop-shadow-[0_2px_12px_rgba(225,6,0,0.45)]">
+                                ENTRADA G — SÃO PAULO F1
+                            </div>
+                            <p class="text-xs sm:text-sm text-amber-200/90 mt-2 font-medium">
+                                Recta Opuesta • Adrenalina pura y máxima velocidad en Interlagos
+                            </p>
+                        </div>
+
+                        <!-- Línea punteada de corte de boleto y código de barras -->
+                        <div class="border-t-2 border-dashed border-white/15 pt-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+                            
+                            <!-- Código de barras decorativo SVG -->
+                            <div class="flex flex-col items-center sm:items-start">
+                                <svg viewBox="0 0 220 44" class="h-10 w-48 sm:w-52 opacity-90" fill="#FFFFFF">
+                                    <rect x="2" y="0" width="3" height="34"/>
+                                    <rect x="8" y="0" width="1.5" height="34"/>
+                                    <rect x="13" y="0" width="5" height="34"/>
+                                    <rect x="22" y="0" width="2" height="34"/>
+                                    <rect x="28" y="0" width="4" height="34"/>
+                                    <rect x="35" y="0" width="1.5" height="34"/>
+                                    <rect x="41" y="0" width="3" height="34"/>
+                                    <rect x="48" y="0" width="6" height="34"/>
+                                    <rect x="58" y="0" width="2" height="34"/>
+                                    <rect x="64" y="0" width="3.5" height="34"/>
+                                    <rect x="72" y="0" width="1.5" height="34"/>
+                                    <rect x="77" y="0" width="4.5" height="34"/>
+                                    <rect x="86" y="0" width="2" height="34"/>
+                                    <rect x="92" y="0" width="5" height="34"/>
+                                    <rect x="101" y="0" width="1.5" height="34"/>
+                                    <rect x="106" y="0" width="3" height="34"/>
+                                    <rect x="114" y="0" width="4" height="34"/>
+                                    <rect x="122" y="0" width="2" height="34"/>
+                                    <rect x="128" y="0" width="6" height="34"/>
+                                    <rect x="138" y="0" width="1.5" height="34"/>
+                                    <rect x="144" y="0" width="3.5" height="34"/>
+                                    <rect x="152" y="0" width="2" height="34"/>
+                                    <rect x="158" y="0" width="5" height="34"/>
+                                    <rect x="167" y="0" width="3" height="34"/>
+                                    <rect x="174" y="0" width="1.5" height="34"/>
+                                    <rect x="180" y="0" width="4" height="34"/>
+                                    <rect x="188" y="0" width="2.5" height="34"/>
+                                    <rect x="195" y="0" width="5" height="34"/>
+                                    <rect x="204" y="0" width="2" height="34"/>
+                                    <rect x="210" y="0" width="4" height="34"/>
+                                    <text x="110" y="43" text-anchor="middle" font-family="Orbitron, sans-serif" font-size="7.5" letter-spacing="3" fill="#9CA3AF">GP-SAO-PAULO-ENT-G-001</text>
+                                </svg>
+                            </div>
+
+                            <!-- Sello Oficial "TICKET CONFIRMADO" -->
+                            <div class="confirmed-stamp px-4 py-2 rounded-xl font-racing font-black text-xs sm:text-sm tracking-widest uppercase select-none">
+                                ✓ TICKET CONFIRMADO
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Franja inferior con colores de Brasil -->
+                    <div class="h-2 w-full bg-gradient-to-r from-[#009c3b] via-[#ffdf00] to-[#002776]"></div>
+                </div>
+            </div>
+
+            <!-- SECCIÓN B (5 cols en desktop): FOTOGRAFÍA Y DEDICATORIA FAMILIAR -->
+            <div class="lg:col-span-5 flex flex-col">
+                <div class="photo-frame rounded-3xl p-4 sm:p-5 flex-1 flex flex-col justify-between shadow-[0_0_35px_rgba(255,209,102,0.12)]">
+                    <div>
+                        <!-- Contenedor de la fotografía con respaldo automático -->
+                        <div class="relative rounded-2xl overflow-hidden bg-black/70 border border-[#ffd166]/25 aspect-[4/3] shadow-inner">
+                            <img 
+                                id="birthday-photo"
+                                src="PXL_20250525_015045265.NIGHT.jpg" 
+                                alt="Celebración de cumpleaños con Carlanga" 
+                                onerror="handlePhotoFallback(this)"
+                                class="w-full h-full object-cover object-center transition-transform duration-700 hover:scale-105"
+                            />
+
+                            <!-- Marcador visual elegante si aún no se ha subido la imagen al repositorio -->
+                            <div id="photo-fallback" class="hidden w-full h-full flex-col items-center justify-center p-6 text-center bg-gradient-to-br from-[#1B1F2A] via-[#12141C] to-[#230B0B]">
+                                <div class="text-4xl mb-2">🎂🏎️📸</div>
+                                <p class="font-racing text-xs sm:text-sm font-bold text-[#ffd166] uppercase tracking-wider">
+                                    Aquí irá la foto familiar
+                                </p>
+                                <p class="text-xs text-gray-300 mt-1.5 max-w-xs leading-relaxed">
+                                    Sube tu foto junto a <code class="text-[#ffd166]">index.html</code> como <code class="text-[#ffd166]">PXL_20250525_015045265.NIGHT.jpg</code> o <code class="text-[#ffd166]">foto.jpg</code> para mostrarla aquí automáticamente.
+                                </p>
+                            </div>
+
+                            <!-- Insignia flotante sobre la foto -->
+                            <div class="absolute bottom-2.5 right-2.5 px-3 py-1 rounded-full bg-black/75 backdrop-blur-md border border-[#ffd166]/35 text-[11px] font-semibold text-[#ffd166]">
+                                🕯️ ¡Feliz Cumpleaños!
+                            </div>
+                        </div>
+
+                        <!-- Tarjeta cálida con la dedicatoria familiar exacta en tipografía cursiva elegante -->
+                        <div class="mt-4 sm:mt-5 rounded-2xl p-4 sm:p-5 bg-gradient-to-br from-[#ffd166]/10 via-amber-500/[0.05] to-transparent border border-[#ffd166]/25 relative">
+                            <span class="block text-[#ffd166]/40 font-dedication text-4xl leading-none select-none mb-1">“</span>
+                            <blockquote class="font-dedication italic text-amber-50 text-base sm:text-lg leading-relaxed tracking-wide">
+                                Feliz cumpleaños Carlanga, de parte de todos los que te amamos. Te deseamos siempre felicidad y salud para disfrutar las cosas que amas!
+                            </blockquote>
+                        </div>
+                    </div>
+
+                    <!-- Pie de tarjeta -->
+                    <div class="mt-4 pt-3 border-t border-white/10 flex items-center justify-between text-xs text-gray-400">
+                        <span>Con todo nuestro amor ❤️</span>
+                        <span class="font-racing text-[#ffd166] font-bold">SÃO PAULO • F1</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Botón discreto para reiniciar toda la animación -->
+        <div class="mt-8 text-center">
+            <button 
+                id="replay-btn"
+                type="button"
+                onclick="replayCelebration()"
+                class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/5 hover:bg-white/10 active:scale-95 border border-white/15 text-gray-300 hover:text-white text-xs sm:text-sm font-semibold transition-all cursor-pointer backdrop-blur-sm"
+            >
+                <svg class="w-4 h-4 text-[#ffd166]" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+                </svg>
+                <span>Volver a ver la sorpresa</span>
+            </button>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+         LÓGICA INTERACTIVA, SÍNTESIS DE AUDIO F1 Y SISTEMA DE CONFETI
+         ========================================================================== -->
+<!-- ... existing code ... -->
+        /**
+         * Respaldo automático de fotografía:
+         * 1. Intenta cargar 'PXL_20250525_015045265.NIGHT.jpg' (src inicial)
+         * 2. Si no existe, intenta cargar 'foto.jpg'
+         * 3. Si aún no se sube ninguna a GitHub, muestra el marcador visual elegante
+         */
+        function handlePhotoFallback(imgElement) {
+            if (!imgElement.dataset.triedShortName) {
+                imgElement.dataset.triedShortName = 'true';
+                imgElement.src = 'foto.jpg';
+            } else {
+                imgElement.style.display = 'none';
+                const fallbackBox = document.getElementById('photo-fallback');
+                fallbackBox.classList.remove('hidden');
+                fallbackBox.classList.add('flex');
+            }
+        }
+
+        /**
+         * Sintetizador Web Audio API (100% autocontenido, sin MP3 externos):
+<!-- ... existing code ... -->
