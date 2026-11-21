@@ -1,309 +1,647 @@
-<!-- ... existing code ... -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>¡Feliz Cumpleaños Carlanga! | Regalo Especial F1</title>
-    
-    <!-- Google Fonts: Orbitron (títulos F1), Plus Jakarta Sans (textos modernos) y Playfair Display (dedicatoria familiar) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;800;900&family=Playfair+Display:ital,wght@0,500;0,700;1,500;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <!-- Tailwind CSS para utilidades responsivas -->
-    <script src="https://cdn.tailwindcss.com"></script>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>¡Feliz Cumpleaños Carlanga! | F1 São Paulo</title>
+  <style>
+    :root {
+      --bg-dark: #0b0c10;
+      --bg-panel: #151821;
+      --f1-red: #e10600;
+      --f1-red-dark: #9e0400;
+      --gold: #f5c542;
+      --gold-light: #ffe38f;
+      --brazil-green: #009c3b;
+      --text-main: #ffffff;
+      --text-muted: #b8beca;
+    }
 
-    <style>
-        /* ==========================================================================
-           VARIABLES Y CONFIGURACIÓN BASE
-           ========================================================================== */
-        :root {
-            --f1-red: #e10600;
-            --f1-red-bright: #ff241d;
-            --f1-dark: #0b0d12;
-            --f1-card: #13161f;
-            --gold: #ffd166;
-            --gold-deep: #d4a338;
-            --brazil-green: #009c3b;
-            --brazil-yellow: #ffdf00;
-            --brazil-blue: #002776;
-        }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
 
-        * {
-            box-sizing: border-box;
-            -webkit-tap-highlight-color: transparent;
-        }
+    body {
+      min-height: 100vh;
+      min-height: 100dvh;
+      background-color: var(--bg-dark);
+      background-image:
+        radial-gradient(circle at 50% 35%, rgba(225, 6, 0, 0.18), transparent 60%),
+        repeating-linear-gradient(
+          45deg,
+          rgba(255, 255, 255, 0.015) 0px,
+          rgba(255, 255, 255, 0.015) 2px,
+          transparent 2px,
+          transparent 8px
+        );
+      color: var(--text-main);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow-x: hidden;
+      padding: 20px 16px;
+    }
 
-        body {
-            margin: 0;
-            padding: 0;
-            min-height: 100vh;
-            background-color: var(--f1-dark);
-            color: #FFFFFF;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            overflow-x: hidden;
-            position: relative;
-        }
+    /* PANTALLA 1: CAJA DE REGALO */
+    #gift-screen {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      width: 100%;
+      max-width: 440px;
+      cursor: pointer;
+      user-select: none;
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
 
-        .font-racing {
-            font-family: 'Orbitron', sans-serif;
-        }
+    #gift-screen.hidden {
+      display: none;
+    }
 
-        .font-dedication {
-            font-family: 'Playfair Display', serif;
-        }
+    .gift-stage {
+      position: relative;
+      width: 210px;
+      height: 220px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 26px;
+      animation: engineIdle 1.6s infinite ease-in-out;
+    }
 
-        /* ==========================================================================
-           FONDO TEXTURA FIBRA DE CARBONO Y LUCES AMBIENTALES CÁLIDAS
-           ========================================================================== */
-        .carbon-bg {
-            background-color: #0b0d12;
-            background-image: 
-                radial-gradient(circle at 50% 35%, rgba(225, 6, 0, 0.16) 0%, rgba(255, 209, 102, 0.06) 35%, rgba(11, 13, 18, 0.96) 78%),
-                linear-gradient(27deg, #12151d 5px, transparent 5px),
-                linear-gradient(207deg, #12151d 5px, transparent 5px),
-                linear-gradient(27deg, #181c26 5px, transparent 5px),
-                linear-gradient(207deg, #181c26 5px, transparent 5px),
-                linear-gradient(90deg, #0e1117 10px, transparent 10px),
-                linear-gradient(#0e1117 25%, #0c0e14 25%, #0c0e14 50%, transparent 50%, transparent 75%, #141720 75%, #141720);
-            background-size: 100% 100%, 20px 20px, 20px 20px, 20px 20px, 20px 20px, 20px 20px, 20px 20px;
-            background-position: 0 0, 0 0, 10px 10px, 0 5px, 10px 15px, 0 0, 0 0;
-        }
-<!-- ... existing code ... -->
-                <!-- Estelas de velocidad aerodinámicas -->
-                <rect x="0" y="42" width="165" height="3" rx="1.5" fill="url(#speedStreak)"/>
-                <rect x="18" y="68" width="130" height="2.5" rx="1.25" fill="url(#speedStreak)"/>
-                <rect x="5" y="132" width="195" height="3.5" rx="1.75" fill="url(#speedStreak)"/>
+    .gift-stage:hover {
+      filter: brightness(1.06);
+    }
 
-                <!-- Estela de humo y aire turbulento trasero -->
-                <ellipse cx="75" cy="118" rx="48" ry="12" fill="rgba(255, 255, 255, 0.14)"/>
-                <ellipse cx="42" cy="112" rx="34" ry="9" fill="rgba(255, 209, 102, 0.12)"/>
+    @keyframes engineIdle {
+      0%, 100% { transform: translate(0, 0) rotate(0deg); }
+      10% { transform: translate(-2px, -1px) rotate(-1.2deg); }
+      20% { transform: translate(2px, 1px) rotate(1.2deg); }
+      30% { transform: translate(-2px, 1px) rotate(-0.8deg); }
+      40% { transform: translate(2px, -1px) rotate(0.8deg); }
+      50% { transform: translate(0, 0) rotate(0deg); }
+    }
 
-                <!-- Fuego/chispas del escape trasero -->
-                <path d="M115 92 L42 87 L68 95 L35 101 L115 99 Z" fill="url(#exhaustFlame)"/>
-<!-- ... existing code ... -->
-            <h1 class="font-racing text-3xl sm:text-5xl font-black tracking-tight text-white drop-shadow-[0_4px_20px_rgba(225,6,0,0.5)] leading-tight">
-                ¡Feliz cumpleaños <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#ffd166] via-amber-300 to-yellow-500">Carlanga!</span>
-            </h1>
+    .gift-stage.opening .gift-lid {
+      animation: lidFly 0.85s forwards cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .gift-stage.opening .gift-box-body {
+      animation: boxPop 0.6s forwards ease-out;
+    }
+
+    @keyframes lidFly {
+      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(-190px) rotate(-24deg) scale(1.08); opacity: 0; }
+    }
+
+    @keyframes boxPop {
+      0% { transform: scale(1); }
+      40% { transform: scale(1.08, 0.92); }
+      100% { transform: scale(0.95); opacity: 0.2; }
+    }
+
+    /* Caja CSS pura (siempre visible al instante) */
+    .gift-wrapper {
+      position: relative;
+      width: 170px;
+      height: 165px;
+    }
+
+    .gift-glow {
+      position: absolute;
+      inset: 10px;
+      background: radial-gradient(circle, rgba(245, 197, 66, 0.35), transparent 70%);
+      filter: blur(14px);
+      z-index: 0;
+    }
+
+    .gift-lid {
+      position: absolute;
+      top: 22px;
+      left: -8px;
+      width: 186px;
+      height: 38px;
+      background: linear-gradient(135deg, #ff1e17, var(--f1-red-dark));
+      border-radius: 8px;
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.55);
+      z-index: 3;
+    }
+
+    .gift-lid::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 30px;
+      height: 100%;
+      background: linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold));
+    }
+
+    .gift-bow {
+      position: absolute;
+      top: -22px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 74px;
+      height: 26px;
+      z-index: 4;
+    }
+
+    .gift-bow::before,
+    .gift-bow::after {
+      content: "";
+      position: absolute;
+      width: 34px;
+      height: 24px;
+      border: 5px solid var(--gold);
+      background: rgba(245, 197, 66, 0.25);
+      border-radius: 50% 50% 0 50%;
+    }
+
+    .gift-bow::before {
+      left: 2px;
+      transform: rotate(-16deg);
+    }
+
+    .gift-bow::after {
+      right: 2px;
+      border-radius: 50% 50% 50% 0;
+      transform: rotate(16deg);
+    }
+
+    .gift-box-body {
+      position: absolute;
+      top: 58px;
+      left: 0;
+      width: 170px;
+      height: 112px;
+      background: linear-gradient(160deg, var(--f1-red), #7a0300);
+      border-radius: 0 0 12px 12px;
+      box-shadow: 0 18px 35px rgba(0, 0, 0, 0.65);
+      z-index: 2;
+      overflow: hidden;
+    }
+
+    .gift-box-body::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 30px;
+      height: 100%;
+      background: linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold));
+    }
+
+    .tap-pill {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(245, 197, 66, 0.45);
+      color: var(--gold-light);
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      padding: 8px 18px;
+      border-radius: 999px;
+      margin-bottom: 14px;
+      animation: pulseText 1.8s infinite ease-in-out;
+    }
+
+    @keyframes pulseText {
+      0%, 100% { transform: scale(1); opacity: 0.92; }
+      50% { transform: scale(1.04); opacity: 1; }
+    }
+
+    .birthday-title {
+      font-size: 1.85rem;
+      font-weight: 800;
+      line-height: 1.2;
+      color: #ffffff;
+      text-shadow: 0 4px 16px rgba(225, 6, 0, 0.45);
+    }
+
+    .birthday-title span {
+      color: var(--gold);
+      display: block;
+      font-size: 2.1rem;
+      margin-top: 4px;
+    }
+
+    /* AUTO DE CARRERAS F1 ANIMADO */
+    #f1-car-overlay {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 50;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      opacity: 0;
+    }
+
+    #f1-car-overlay.race {
+      opacity: 1;
+    }
+
+    .f1-car-runner {
+      width: 320px;
+      max-width: 80vw;
+      transform: translateX(-120vw);
+    }
+
+    #f1-car-overlay.race .f1-car-runner {
+      animation: carZoom 1.35s cubic-bezier(0.25, 0.85, 0.35, 1) forwards;
+    }
+
+    @keyframes carZoom {
+      0% { transform: translateX(-110vw) scale(0.85); }
+      45% { transform: translateX(12vw) scale(1.05); }
+      100% { transform: translateX(135vw) scale(1.1); }
+    }
+
+    /* PANTALLA 2: REVELACIÓN DEL TICKET Y FOTO */
+    #reveal-screen {
+      display: none;
+      width: 100%;
+      max-width: 520px;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      animation: revealFade 0.8s ease forwards;
+    }
+
+    #reveal-screen.visible {
+      display: flex;
+    }
+
+    @keyframes revealFade {
+      from { opacity: 0; transform: translateY(22px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* TICKET F1 */
+    .f1-ticket {
+      width: 100%;
+      background: linear-gradient(145deg, #1b1f2b, #11131a);
+      border: 2px solid var(--gold);
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.7), 0 0 25px rgba(225, 6, 0, 0.25);
+    }
+
+    .ticket-header {
+      background: linear-gradient(90deg, var(--f1-red), #a80400);
+      padding: 14px 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px dashed rgba(255, 255, 255, 0.3);
+    }
+
+    .ticket-badge {
+      font-weight: 900;
+      font-size: 1.05rem;
+      letter-spacing: 1px;
+    }
+
+    .brazil-tag {
+      background: var(--brazil-green);
+      color: #ffdf00;
+      font-weight: 800;
+      font-size: 0.78rem;
+      padding: 4px 10px;
+      border-radius: 999px;
+      letter-spacing: 0.6px;
+    }
+
+    .ticket-body {
+      padding: 20px 18px;
+      text-align: center;
+    }
+
+    .ticket-circuit {
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .ticket-main-pass {
+      font-size: 1.75rem;
+      font-weight: 900;
+      color: var(--gold);
+      letter-spacing: 0.8px;
+      margin-bottom: 14px;
+      text-shadow: 0 2px 10px rgba(245, 197, 66, 0.3);
+    }
+
+    .ticket-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      background: rgba(255, 255, 255, 0.04);
+      border-radius: 12px;
+      padding: 12px;
+      text-align: left;
+    }
+
+    .ticket-field span {
+      display: block;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      letter-spacing: 0.8px;
+    }
+
+    .ticket-field strong {
+      font-size: 0.98rem;
+      color: #ffffff;
+    }
+
+    /* MARCO DE FOTO Y MENSAJE */
+    .photo-card {
+      width: 100%;
+      background: var(--bg-panel);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 18px;
+      padding: 14px;
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6);
+    }
+
+    .photo-frame {
+      width: 100%;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #0d0f14;
+    }
+
+    .photo-frame img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+    }
+
+    .dedication-box {
+      margin-top: 16px;
+      padding: 14px 12px 6px;
+      text-align: center;
+      border-top: 1px solid rgba(245, 197, 66, 0.25);
+    }
+
+    .dedication-text {
+      font-family: Georgia, "Times New Roman", serif;
+      font-style: italic;
+      font-size: 1.12rem;
+      line-height: 1.55;
+      color: #f8f4e8;
+    }
+
+    .replay-btn {
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      color: var(--text-muted);
+      padding: 10px 20px;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .replay-btn:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+
+    /* CONFETI */
+    #confetti-canvas {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 45;
+    }
+  </style>
+</head>
+<body>
+
+  <canvas id="confetti-canvas"></canvas>
+
+  <!-- PANTALLA 1: REGALO VIBRANDO -->
+  <main id="gift-screen" role="button" tabindex="0" aria-label="Toca para abrir tu regalo">
+    <div class="gift-stage" id="gift-stage">
+      <div class="gift-wrapper">
+        <div class="gift-glow"></div>
+        <div class="gift-bow"></div>
+        <div class="gift-lid"></div>
+        <div class="gift-box-body"></div>
+      </div>
+    </div>
+    <div class="tap-pill">Toca para abrir tu regalo</div>
+    <h1 class="birthday-title">¡Feliz cumpleaños <span>Carlanga!</span></h1>
+  </main>
+
+  <!-- ANIMACIÓN DE AUTO F1 -->
+  <div id="f1-car-overlay" aria-hidden="true">
+    <svg class="f1-car-runner" viewBox="0 0 420 130" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Estela de velocidad -->
+      <rect x="0" y="68" width="90" height="4" rx="2" fill="#f5c542" opacity="0.7"/>
+      <rect x="15" y="82" width="65" height="3" rx="1.5" fill="#e10600" opacity="0.8"/>
+      <!-- Alerón trasero -->
+      <path d="M58 42H84L92 78H66L58 42Z" fill="#181b24" stroke="#f5c542" stroke-width="2"/>
+      <!-- Chasis principal rojo F1 -->
+      <path d="M78 76L125 56H225L278 72L376 84C386 85 392 90 392 95H74L78 76Z" fill="#e10600"/>
+      <!-- Franja dorada y verde Brasil -->
+      <path d="M135 64H235L268 74H125L135 64Z" fill="#f5c542"/>
+      <path d="M175 56L195 44H224L236 56H175Z" fill="#181b24"/>
+      <!-- Halo y casco -->
+      <circle cx="212" cy="52" r="9" fill="#009c3b" stroke="#ffdf00" stroke-width="2"/>
+      <!-- Alerón delantero -->
+      <path d="M352 90H404L410 98H348L352 90Z" fill="#181b24" stroke="#f5c542" stroke-width="1.5"/>
+      <!-- Rueda trasera -->
+      <circle cx="112" cy="95" r="24" fill="#111318" stroke="#2c313d" stroke-width="4"/>
+      <circle cx="112" cy="95" r="10" fill="#e10600"/>
+      <!-- Rueda delantera -->
+      <circle cx="326" cy="95" r="24" fill="#111318" stroke="#2c313d" stroke-width="4"/>
+      <circle cx="326" cy="95" r="10" fill="#e10600"/>
+    </svg>
+  </div>
+
+  <!-- PANTALLA 2: TICKET F1 Y FOTO FAMILIAR -->
+  <section id="reveal-screen" aria-live="polite">
+    <div class="f1-ticket">
+      <div class="ticket-header">
+        <span class="ticket-badge">FORMULA 1 • VIP PASS</span>
+        <span class="brazil-tag">SÃO PAULO • BRASIL</span>
+      </div>
+      <div class="ticket-body">
+        <div class="ticket-circuit">Autódromo José Carlos Pace • Interlagos</div>
+        <div class="ticket-main-pass">ENTRADA G — SÃO PAULO F1</div>
+        <div class="ticket-grid">
+          <div class="ticket-field">
+            <span>Invitado Especial</span>
+            <strong>CARLANGA</strong>
+          </div>
+          <div class="ticket-field">
+            <span>Sector</span>
+            <strong>TRIBUNA G • F1</strong>
+          </div>
+          <div class="ticket-field">
+            <span>Evento</span>
+            <strong>GP de São Paulo</strong>
+          </div>
+          <div class="ticket-field">
+            <span>Estado</span>
+            <strong style="color: #4ade80;">CONFIRMADO ✓</strong>
+          </div>
         </div>
-    </main>
+      </div>
+    </div>
 
-    <!-- ==========================================================================
-         2. PANTALLA DE REVELACIÓN: TICKET F1 SÃO PAULO + FOTO Y DEDICATORIA
-         ========================================================================== -->
-    <section id="reveal-screen" class="hidden relative z-20 w-full max-w-5xl mx-auto py-4 sm:py-8">
-        
-        <!-- Encabezado celebratorio -->
-        <div class="text-center mb-6 sm:mb-8">
-            <span class="inline-block px-4 py-1 rounded-full bg-[#e10600]/20 border border-[#e10600]/45 text-red-400 font-racing text-xs sm:text-sm font-bold tracking-widest uppercase mb-2">
-                🏁 ¡Luz verde! Nos vamos a Brasil 🏁
-            </span>
-            <h2 class="font-racing text-2xl sm:text-4xl md:text-5xl font-black text-white tracking-wide">
-                ¡FELIZ CUMPLEAÑOS <span class="text-[#ffd166]">CARLANGA!</span>
-            </h2>
-        </div>
+    <div class="photo-card">
+      <div class="photo-frame">
+        <img
+          id="family-photo"
+          src="PXL_20250525_015045265.NIGHT.jpg"
+          alt="Celebración de cumpleaños con Carlanga"
+          onerror="if(!this.dataset.tried){this.dataset.tried='1';this.src='foto.jpg';}else{this.style.display='none';}"
+        />
+      </div>
+      <div class="dedication-box">
+        <p class="dedication-text">
+          “Feliz cumpleaños Carlanga, de parte de todos los que te amamos. Te deseamos siempre felicidad y salud para disfrutar las cosas que amas!”
+        </p>
+      </div>
+    </div>
 
-        <!-- Contenedor principal en Grid Responsivo (Ticket Oficial F1 + Fotografía y Dedicatoria) -->
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-stretch">
-            
-            <!-- SECCIÓN A (7 cols en desktop): EL TICKET OFICIAL F1 -->
-            <div class="lg:col-span-7 flex flex-col">
-                <div class="f1-ticket rounded-3xl flex-1 flex flex-col justify-between">
-                    <!-- Franja superior bandera a cuadros -->
-                    <div class="checkered-strip"></div>
+    <button type="button" class="replay-btn" id="replay-btn">Volver a ver la sorpresa</button>
+  </section>
 
-                    <!-- Cabecera roja F1 con bandera de Brasil -->
-                    <div class="bg-gradient-to-r from-[#e10600] via-[#c40500] to-[#990300] px-5 sm:px-7 py-4 flex items-center justify-between gap-3 border-b border-[#ffd166]/35">
-                        <div>
-                            <p class="text-[11px] sm:text-xs font-bold tracking-[0.2em] text-[#ffd166] uppercase">
-                                Official VIP Race Pass • FIA World Championship
-                            </p>
-                            <h3 class="font-racing text-sm sm:text-lg md:text-xl font-black text-white tracking-wide mt-1 leading-snug">
-                                FORMULA 1 — GRANDE PRÊMIO DE SÃO PAULO • AUTÓDROMO DE INTERLAGOS
-                            </h3>
-                        </div>
+  <script>
+    const giftScreen = document.getElementById("gift-screen");
+    const giftStage = document.getElementById("gift-stage");
+    const carOverlay = document.getElementById("f1-car-overlay");
+    const revealScreen = document.getElementById("reveal-screen");
+    const replayBtn = document.getElementById("replay-btn");
+    const canvas = document.getElementById("confetti-canvas");
+    const ctx = canvas.getContext("2d");
 
-                        <!-- Bandera de Brasil en SVG nítido -->
-                        <div class="shrink-0 w-12 h-8 sm:w-14 sm:h-10 rounded-md overflow-hidden shadow-lg border border-white/25" title="Brasil">
-                            <svg viewBox="0 0 72 50" class="w-full h-full">
-                                <rect width="72" height="50" fill="#009c3b"/>
-                                <polygon points="36,6 65,25 36,44 7,25" fill="#ffdf00"/>
-                                <circle cx="36" cy="25" r="11" fill="#002776"/>
-                                <path d="M25.5 23 Q36 20 46.5 26.5" stroke="#FFFFFF" stroke-width="2" fill="none"/>
-                            </svg>
-                        </div>
-                    </div>
+    let opened = false;
+    let particles = [];
+    let animId = null;
 
-                    <!-- Cuerpo del Ticket -->
-                    <div class="p-5 sm:p-7 space-y-5 relative">
-                        <!-- Muescas laterales estilo borde perforado -->
-                        <div class="ticket-notch-left top-1/2 -translate-y-1/2"></div>
-                        <div class="ticket-notch-right top-1/2 -translate-y-1/2"></div>
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener("resize", resizeCanvas);
+    resizeCanvas();
 
-                        <!-- Titular del pase VIP -->
-                        <div class="bg-white/[0.04] rounded-2xl p-4 border border-[#ffd166]/25 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
-                            <div>
-                                <span class="block text-[11px] uppercase tracking-widest text-gray-400 font-bold">
-                                    PASAJERO / INVITADO VIP
-                                </span>
-                                <span class="font-racing font-black text-xl sm:text-2xl text-[#ffd166] tracking-wider mt-0.5 block">
-                                    CARLANGA
-                                </span>
-                            </div>
-                            <span class="inline-flex items-center self-start sm:self-center gap-1.5 px-3 py-1 rounded-full bg-[#009c3b]/20 border border-[#009c3b]/50 text-emerald-300 text-xs font-bold tracking-wider uppercase">
-                                <span>🇧🇷</span> São Paulo, Brasil
-                            </span>
-                        </div>
+    function playF1Sound() {
+      try {
+        const AudioCtx = window.AudioContext || window.webkitAudioContext;
+        if (!AudioCtx) return;
+        const audio = new AudioCtx();
+        const osc = audio.createOscillator();
+        const gain = audio.createGain();
+        osc.type = "sawtooth";
+        const now = audio.currentTime;
+        osc.frequency.setValueAtTime(95, now);
+        osc.frequency.exponentialRampToValueAtTime(340, now + 0.55);
+        osc.frequency.exponentialRampToValueAtTime(140, now + 1.25);
 
-                        <!-- SECTOR EN DESTAQUE GIGANTE: ENTRADA G — SÃO PAULO F1 -->
-                        <div class="relative rounded-2xl p-5 sm:p-6 bg-gradient-to-br from-[#ffd166]/15 via-[#e10600]/20 to-black/70 border-2 border-[#ffd166]/75 text-center shadow-[0_0_28px_rgba(255,209,102,0.16)]">
-                            <span class="inline-block px-3.5 py-0.5 rounded-full bg-gradient-to-r from-[#ffd166] to-amber-400 text-[#0b0d12] font-racing font-black text-[11px] tracking-widest uppercase mb-2.5">
-                                SECTOR G • ACCESO OFICIAL • ¡NOS VEMOS EN BRASIL!
-                            </span>
-                            <div class="font-racing text-2xl sm:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#ffd166] via-white to-[#ffd166] tracking-wider drop-shadow-[0_2px_12px_rgba(225,6,0,0.45)]">
-                                ENTRADA G — SÃO PAULO F1
-                            </div>
-                            <p class="text-xs sm:text-sm text-amber-200/90 mt-2 font-medium">
-                                Recta Opuesta • Adrenalina pura y máxima velocidad en Interlagos
-                            </p>
-                        </div>
+        gain.gain.setValueAtTime(0.001, now);
+        gain.gain.linearRampToValueAtTime(0.14, now + 0.35);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 1.3);
 
-                        <!-- Línea punteada de corte de boleto y código de barras -->
-                        <div class="border-t-2 border-dashed border-white/15 pt-4 flex flex-col sm:flex-row items-center justify-between gap-4">
-                            
-                            <!-- Código de barras decorativo SVG -->
-                            <div class="flex flex-col items-center sm:items-start">
-                                <svg viewBox="0 0 220 44" class="h-10 w-48 sm:w-52 opacity-90" fill="#FFFFFF">
-                                    <rect x="2" y="0" width="3" height="34"/>
-                                    <rect x="8" y="0" width="1.5" height="34"/>
-                                    <rect x="13" y="0" width="5" height="34"/>
-                                    <rect x="22" y="0" width="2" height="34"/>
-                                    <rect x="28" y="0" width="4" height="34"/>
-                                    <rect x="35" y="0" width="1.5" height="34"/>
-                                    <rect x="41" y="0" width="3" height="34"/>
-                                    <rect x="48" y="0" width="6" height="34"/>
-                                    <rect x="58" y="0" width="2" height="34"/>
-                                    <rect x="64" y="0" width="3.5" height="34"/>
-                                    <rect x="72" y="0" width="1.5" height="34"/>
-                                    <rect x="77" y="0" width="4.5" height="34"/>
-                                    <rect x="86" y="0" width="2" height="34"/>
-                                    <rect x="92" y="0" width="5" height="34"/>
-                                    <rect x="101" y="0" width="1.5" height="34"/>
-                                    <rect x="106" y="0" width="3" height="34"/>
-                                    <rect x="114" y="0" width="4" height="34"/>
-                                    <rect x="122" y="0" width="2" height="34"/>
-                                    <rect x="128" y="0" width="6" height="34"/>
-                                    <rect x="138" y="0" width="1.5" height="34"/>
-                                    <rect x="144" y="0" width="3.5" height="34"/>
-                                    <rect x="152" y="0" width="2" height="34"/>
-                                    <rect x="158" y="0" width="5" height="34"/>
-                                    <rect x="167" y="0" width="3" height="34"/>
-                                    <rect x="174" y="0" width="1.5" height="34"/>
-                                    <rect x="180" y="0" width="4" height="34"/>
-                                    <rect x="188" y="0" width="2.5" height="34"/>
-                                    <rect x="195" y="0" width="5" height="34"/>
-                                    <rect x="204" y="0" width="2" height="34"/>
-                                    <rect x="210" y="0" width="4" height="34"/>
-                                    <text x="110" y="43" text-anchor="middle" font-family="Orbitron, sans-serif" font-size="7.5" letter-spacing="3" fill="#9CA3AF">GP-SAO-PAULO-ENT-G-001</text>
-                                </svg>
-                            </div>
+        osc.connect(gain);
+        gain.connect(audio.destination);
+        osc.start(now);
+        osc.stop(now + 1.35);
+      } catch (e) {
+        // Si el navegador bloquea audio, la animación continúa normalmente
+      }
+    }
 
-                            <!-- Sello Oficial "TICKET CONFIRMADO" -->
-                            <div class="confirmed-stamp px-4 py-2 rounded-xl font-racing font-black text-xs sm:text-sm tracking-widest uppercase select-none">
-                                ✓ TICKET CONFIRMADO
-                            </div>
-                        </div>
-                    </div>
+    function launchConfetti() {
+      const colors = ["#e10600", "#f5c542", "#009c3b", "#ffdf00", "#ffffff"];
+      particles = Array.from({ length: 95 }, () => ({
+        x: canvas.width * 0.5 + (Math.random() - 0.5) * 140,
+        y: canvas.height * 0.45,
+        vx: (Math.random() - 0.5) * 14,
+        vy: -Math.random() * 13 - 4,
+        size: Math.random() * 7 + 4,
+        color: colors[Math.floor(Math.random() * colors.length)],
+        rot: Math.random() * 360,
+        vRot: (Math.random() - 0.5) * 12
+      }));
 
-                    <!-- Franja inferior con colores de Brasil -->
-                    <div class="h-2 w-full bg-gradient-to-r from-[#009c3b] via-[#ffdf00] to-[#002776]"></div>
-                </div>
-            </div>
-
-            <!-- SECCIÓN B (5 cols en desktop): FOTOGRAFÍA Y DEDICATORIA FAMILIAR -->
-            <div class="lg:col-span-5 flex flex-col">
-                <div class="photo-frame rounded-3xl p-4 sm:p-5 flex-1 flex flex-col justify-between shadow-[0_0_35px_rgba(255,209,102,0.12)]">
-                    <div>
-                        <!-- Contenedor de la fotografía con respaldo automático -->
-                        <div class="relative rounded-2xl overflow-hidden bg-black/70 border border-[#ffd166]/25 aspect-[4/3] shadow-inner">
-                            <img 
-                                id="birthday-photo"
-                                src="PXL_20250525_015045265.NIGHT.jpg" 
-                                alt="Celebración de cumpleaños con Carlanga" 
-                                onerror="handlePhotoFallback(this)"
-                                class="w-full h-full object-cover object-center transition-transform duration-700 hover:scale-105"
-                            />
-
-                            <!-- Marcador visual elegante si aún no se ha subido la imagen al repositorio -->
-                            <div id="photo-fallback" class="hidden w-full h-full flex-col items-center justify-center p-6 text-center bg-gradient-to-br from-[#1B1F2A] via-[#12141C] to-[#230B0B]">
-                                <div class="text-4xl mb-2">🎂🏎️📸</div>
-                                <p class="font-racing text-xs sm:text-sm font-bold text-[#ffd166] uppercase tracking-wider">
-                                    Aquí irá la foto familiar
-                                </p>
-                                <p class="text-xs text-gray-300 mt-1.5 max-w-xs leading-relaxed">
-                                    Sube tu foto junto a <code class="text-[#ffd166]">index.html</code> como <code class="text-[#ffd166]">PXL_20250525_015045265.NIGHT.jpg</code> o <code class="text-[#ffd166]">foto.jpg</code> para mostrarla aquí automáticamente.
-                                </p>
-                            </div>
-
-                            <!-- Insignia flotante sobre la foto -->
-                            <div class="absolute bottom-2.5 right-2.5 px-3 py-1 rounded-full bg-black/75 backdrop-blur-md border border-[#ffd166]/35 text-[11px] font-semibold text-[#ffd166]">
-                                🕯️ ¡Feliz Cumpleaños!
-                            </div>
-                        </div>
-
-                        <!-- Tarjeta cálida con la dedicatoria familiar exacta en tipografía cursiva elegante -->
-                        <div class="mt-4 sm:mt-5 rounded-2xl p-4 sm:p-5 bg-gradient-to-br from-[#ffd166]/10 via-amber-500/[0.05] to-transparent border border-[#ffd166]/25 relative">
-                            <span class="block text-[#ffd166]/40 font-dedication text-4xl leading-none select-none mb-1">“</span>
-                            <blockquote class="font-dedication italic text-amber-50 text-base sm:text-lg leading-relaxed tracking-wide">
-                                Feliz cumpleaños Carlanga, de parte de todos los que te amamos. Te deseamos siempre felicidad y salud para disfrutar las cosas que amas!
-                            </blockquote>
-                        </div>
-                    </div>
-
-                    <!-- Pie de tarjeta -->
-                    <div class="mt-4 pt-3 border-t border-white/10 flex items-center justify-between text-xs text-gray-400">
-                        <span>Con todo nuestro amor ❤️</span>
-                        <span class="font-racing text-[#ffd166] font-bold">SÃO PAULO • F1</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Botón discreto para reiniciar toda la animación -->
-        <div class="mt-8 text-center">
-            <button 
-                id="replay-btn"
-                type="button"
-                onclick="replayCelebration()"
-                class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/5 hover:bg-white/10 active:scale-95 border border-white/15 text-gray-300 hover:text-white text-xs sm:text-sm font-semibold transition-all cursor-pointer backdrop-blur-sm"
-            >
-                <svg class="w-4 h-4 text-[#ffd166]" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
-                </svg>
-                <span>Volver a ver la sorpresa</span>
-            </button>
-        </div>
-    </section>
-
-    <!-- ==========================================================================
-         LÓGICA INTERACTIVA, SÍNTESIS DE AUDIO F1 Y SISTEMA DE CONFETI
-         ========================================================================== -->
-<!-- ... existing code ... -->
-        /**
-         * Respaldo automático de fotografía:
-         * 1. Intenta cargar 'PXL_20250525_015045265.NIGHT.jpg' (src inicial)
-         * 2. Si no existe, intenta cargar 'foto.jpg'
-         * 3. Si aún no se sube ninguna a GitHub, muestra el marcador visual elegante
-         */
-        function handlePhotoFallback(imgElement) {
-            if (!imgElement.dataset.triedShortName) {
-                imgElement.dataset.triedShortName = 'true';
-                imgElement.src = 'foto.jpg';
-            } else {
-                imgElement.style.display = 'none';
-                const fallbackBox = document.getElementById('photo-fallback');
-                fallbackBox.classList.remove('hidden');
-                fallbackBox.classList.add('flex');
-            }
+      if (animId) cancelAnimationFrame(animId);
+      function tick() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        particles.forEach((p) => {
+          p.x += p.vx;
+          p.y += p.vy;
+          p.vy += 0.32;
+          p.rot += p.vRot;
+          ctx.save();
+          ctx.translate(p.x, p.y);
+          ctx.rotate((p.rot * Math.PI) / 180);
+          ctx.fillStyle = p.color;
+          ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size * 0.6);
+          ctx.restore();
+        });
+        particles = particles.filter((p) => p.y < canvas.height + 30);
+        if (particles.length > 0) {
+          animId = requestAnimationFrame(tick);
         }
+      }
+      tick();
+    }
 
-        /**
-         * Sintetizador Web Audio API (100% autocontenido, sin MP3 externos):
-<!-- ... existing code ... -->
+    function openGift() {
+      if (opened) return;
+      opened = true;
+      playF1Sound();
+      giftStage.classList.add("opening");
+      launchConfetti();
+
+      setTimeout(() => {
+        carOverlay.classList.add("race");
+      }, 220);
+
+      setTimeout(() => {
+        giftScreen.classList.add("hidden");
+        revealScreen.classList.add("visible");
+      }, 1150);
+
+      setTimeout(() => {
+        carOverlay.classList.remove("race");
+      }, 1650);
+    }
+
+    function resetGift() {
+      opened = false;
+      revealScreen.classList.remove("visible");
+      giftStage.classList.remove("opening");
+      carOverlay.classList.remove("race");
+      giftScreen.classList.remove("hidden");
+    }
+
+    giftScreen.addEventListener("click", openGift);
+    giftScreen.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") openGift();
+    });
+    replayBtn.addEventListener("click", resetGift);
+  </script>
+</body>
+</html>
